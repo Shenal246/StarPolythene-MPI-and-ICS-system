@@ -1,0 +1,63 @@
+<!--<div id="btn">-->
+<!--  &nbsp;-->
+<!--  <button mat-raised-button (click)="printPage()"><mat-icon>print</mat-icon>Print</button>-->
+<!--</div>-->
+
+<div id="btn">
+  &nbsp;
+  <button mat-raised-button><mat-icon>print</mat-icon>Print</button>
+</div>
+<mat-grid-list [cols]="12"  rowHeight="11rem">
+
+  <mat-grid-tile [colspan]="12" [rowspan]="1">
+    <mat-card>
+      <mat-card-header><mat-card-title>Production Progress</mat-card-title></mat-card-header>
+      <mat-card-content>
+        <mat-form [formGroup]="form" >
+          <mat-form-field appearance="outline">
+            <mat-label>Start Date</mat-label>
+            <input matInput [matDatepicker]="dos" formControlName="startdate">
+            <mat-datepicker-toggle matIconSuffix [for]="dos"></mat-datepicker-toggle>
+            <mat-datepicker startView="multi-year" #dos></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>End Date</mat-label>
+            <input matInput [matDatepicker]="doe" formControlName="enddate">
+            <mat-datepicker-toggle matIconSuffix [for]="doe" startView="multi-year"></mat-datepicker-toggle>
+            <mat-datepicker startView="multi-year" #doe></mat-datepicker>
+          </mat-form-field>
+          <div>
+            <button mat-raised-button color="primary" (click)="btnSearch()" class="btn"><mat-icon>search</mat-icon>Search</button>
+            <button mat-raised-button color="primary" class="btn" (click)="clearChart()"><mat-icon>reorder</mat-icon>Clear Search</button>
+          </div>
+        </mat-form>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+
+  <mat-grid-tile [colspan]="12" [rowspan]="3">
+    <mat-card id="pnleone">
+      <mat-card-header><mat-card-title>Production Demand Analysis</mat-card-title></mat-card-header>
+      <mat-card-content>
+        <mat-table [dataSource]="data">
+
+              <ng-container *ngFor="let column of columns; let i = index;" [matColumnDef]="column">
+                <mat-header-cell *matHeaderCellDef> {{ headers[i] }} </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{ element[binders[i]] }} </mat-cell>
+              </ng-container>
+
+              <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: columns;"></mat-row>
+
+        </mat-table>
+      </mat-card-content>
+    </mat-card>
+    <mat-card #printableContent id="pnltwo">
+      <mat-card-header><mat-card-title>Bar Chart View</mat-card-title></mat-card-header>
+      <mat-card-content #columnchart></mat-card-content>
+    </mat-card>
+
+  </mat-grid-tile>
+
+  </mat-grid-list>

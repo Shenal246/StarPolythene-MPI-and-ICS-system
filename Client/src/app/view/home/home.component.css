@@ -1,0 +1,77 @@
+mat-grid-list {
+  /*padding: 10% 20% 10% 20% !important;*/
+  margin: 8px;
+}
+
+mat-card {
+  height: 99% !important;
+  width: 100%;
+  margin: 5px;
+  overflow: auto;
+  border-radius: 12px;
+}
+
+mat-card-title{
+  margin-left: 5px;
+  margin-top: 5px;
+  background-color: #8aa88a;
+  border-radius: 6px;
+  padding-left: 10px;
+}
+
+mat-card img{
+  width: 50%;
+  height: 80%;
+}
+
+#quicklinks mat-card img{
+  scale: 290%;
+  padding-left: 19px;
+  padding-top: 15px;
+}
+
+#quicklinks mat-card{
+  height: unset!important;
+  padding-top: 4px;
+  width: 150px;
+  margin: 0 20px 0 20px;
+  border: solid #316868;
+}
+
+mat-card-footer{
+  font-size: 18px;
+  margin-top: 55px;
+  text-align: center;
+  background-color: #316868;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+mat-card-footer a{
+  text-decoration: none;
+  color: white;
+}
+
+.logoarea {
+  /*width: 10%;*/
+  /*height: 20%;*/
+  /*background-position: bottom right;*/
+  max-width: 170px; /* Adjust the value as per your requirement */
+  position: absolute;
+  top: -95px; /* Adjust the value to set the distance from the top of the screen */
+  left: 20px; /* Adjust the value to set the distance from the left of the screen */
+}
+
+/* your-component.css */
+.hero-home {
+  height: 400px; /* Adjust the height to your desired value */
+}
+
+#socialmedia{
+  text-align: center!important;
+}
+
+#cardpanel{
+  height: 5px !important;
+}
+

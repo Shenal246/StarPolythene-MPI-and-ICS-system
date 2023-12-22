@@ -1,0 +1,173 @@
+<mat-grid-list [cols]="cols" rowHeight="4rem">
+
+  <mat-grid-tile [colspan]="4" [rowspan]="10">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Payment Detail</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content id="paymentform">
+        <mat-form [formGroup]="form" >
+
+          <mat-form-field appearance="outline">
+            <mat-label>Date</mat-label>
+            <input matInput [matDatepicker]="datev" formControlName="date">
+            <mat-datepicker-toggle matIconSuffix [for]="datev"></mat-datepicker-toggle>
+            <mat-datepicker #datev></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Amount(Rs:)</mat-label>
+            <input matInput formControlName="amount">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Cheque No:</mat-label>
+            <input matInput formControlName="chequeno">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Time</mat-label>
+            <input type="time" matInput formControlName="time" id="selectedTime" >
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Date of Realized</mat-label>
+            <input matInput [matDatepicker]="dor" formControlName="dorealized">
+            <mat-datepicker-toggle matIconSuffix [for]="dor"></mat-datepicker-toggle>
+            <mat-datepicker #dor></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Description</mat-label>
+            <input matInput formControlName="description">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Payment Type</mat-label>
+            <mat-select formControlName="paymenttype">
+              <mat-option [value]="null" selected>Not Selected</mat-option>
+              <mat-option *ngFor="let paymenttype of paymenttypes" [value]="paymenttype">{{paymenttype.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Payment Status</mat-label>
+            <mat-select formControlName="paymentstatus">
+              <mat-option [value]="null" selected>Not Selected</mat-option>
+              <mat-option *ngFor="let paymentstatus of paymentstatuses" [value]="paymentstatus">{{paymentstatus.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Employee</mat-label>
+            <mat-select formControlName="employee">
+              <mat-option [value]="null" selected>Not Selected</mat-option>
+              <mat-option *ngFor="let employee of employees" [value]="employee">{{employee.callingname}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <div id="butpanel">
+            <button mat-raised-button (click)="add()" [disabled]="!praadd">Add</button>
+            <button mat-raised-button (click)="clear()">Clear</button>
+            <button mat-raised-button (click)="update()" [disabled]="!praupd">Update</button>
+            <button mat-raised-button (click)="delete()" [disabled]="!pradel">Delete</button>
+          </div>
+        </mat-form>
+      </mat-card-content>
+
+    </mat-card>
+  </mat-grid-tile>
+
+  <mat-grid-tile [colspan]="8" [rowspan]="4">
+    <mat-card id="ssearch">
+      <mat-card-header>
+        <mat-card-title>Payment Search</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+
+        <mat-form [formGroup]="ssearch">
+
+<!--          <mat-form-field appearance="outline">-->
+<!--            <mat-label>Search by Date</mat-label>-->
+<!--            <input matInput formControlName="ssdate">-->
+<!--          </mat-form-field>-->
+          <mat-form-field appearance="outline">
+            <mat-label>Search by date</mat-label>
+            <input matInput [matDatepicker]="sbd" formControlName="ssdate">
+            <mat-datepicker-toggle matIconSuffix [for]="sbd"></mat-datepicker-toggle>
+            <mat-datepicker #sbd></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Search by Cheque No</mat-label>
+            <input matInput formControlName="sschequeno">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Search by DO Realized</mat-label>
+            <input matInput [matDatepicker]="dod" formControlName="ssdorealized">
+            <mat-datepicker-toggle matIconSuffix [for]="dod"></mat-datepicker-toggle>
+            <mat-datepicker #dod></mat-datepicker>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Search By Payment Status</mat-label>
+            <mat-select formControlName="sspaymentstatus">
+              <mat-option [value]="null" selected>Not Selected</mat-option>
+              <mat-option *ngFor="let paymentstatus of paymentstatuses" [value]="paymentstatus.id">{{paymentstatus.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <div>
+            <button mat-raised-button color="primary" (click)="btnSearchMc()"><mat-icon>search</mat-icon>Search</button>
+            <button mat-raised-button color="primary" (click)="btnSearchClearMe()"><mat-icon>reorder</mat-icon>Clear Search</button>
+          </div>
+
+        </mat-form>
+
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+
+  <mat-grid-tile [colspan]="8" [rowspan]="6">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Payment Table</mat-card-title>
+        <div id="loading">
+          <img [src]="imageurl">
+        </div>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-table [dataSource]="data">
+
+          <ng-container *ngFor="let column of columns;let i = index;" [matColumnDef]="column">
+            <mat-header-cell *matHeaderCellDef> {{headers[i]}} </mat-header-cell>
+            <mat-cell *matCellDef="let element">{{ uiassist.getProperty(element,binders[i]) }} </mat-cell>
+          </ng-container>
+
+          <ng-container *ngFor="let cscolumn of cscolumns;let i = index;" [matColumnDef]="cscolumn">
+            <mat-header-cell *matHeaderCellDef>
+              <mat-form [formGroup]="csearch" class="csearch">
+                <mat-form-field appearance="outline">
+                  <mat-label>{{csprompts[i]}}</mat-label>
+                  <input matInput [formControlName]="cscolumn"
+                         (keyup)="filterTable()">
+                </mat-form-field>
+              </mat-form>
+            </mat-header-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+          <mat-header-row *matHeaderRowDef="cscolumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: columns;" (click)="fillForm(row)" [ngClass]="{'selected-row': row === selectedrow}"></mat-row>
+
+        </mat-table>
+        <mat-paginator [length]="20" [pageSize]="3" [pageSizeOptions]="[3,5,10,20]"></mat-paginator>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+
+
+</mat-grid-list>

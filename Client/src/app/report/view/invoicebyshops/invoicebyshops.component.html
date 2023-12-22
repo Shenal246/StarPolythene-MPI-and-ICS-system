@@ -1,0 +1,56 @@
+
+<div id="btn">
+  &nbsp;
+  <button mat-raised-button><mat-icon>print</mat-icon>Print</button>
+</div>
+
+<mat-grid-list [cols]="1" rowHeight="12rem">
+
+  <mat-grid-tile [colspan]="1" [rowspan]="2">
+    <mat-card>
+      <mat-card-header><mat-card-title>Total Sales</mat-card-title></mat-card-header>
+      <mat-card-content>
+        <mat-form [formGroup]="form">
+          <mat-form-field appearance="outline">
+            <mat-label>Year</mat-label>
+            <mat-select formControlName="year" (selectionChange)="loadDataForYear()">
+              <mat-option [value]="null" selected>Not Selected</mat-option>
+              <mat-option *ngFor="let year of years" [value]="year">{{year}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <button mat-raised-button id="clear" (click)="clearChart()"><mat-icon>reorder</mat-icon>Clear</button>
+
+        </mat-form>
+
+        <mat-table [dataSource]="data">
+              <ng-container *ngFor="let column of columns; let i = index;" [matColumnDef]="column">
+                <mat-header-cell *matHeaderCellDef> {{ headers[i] }} </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{ element[binders[i]] }} </mat-cell>
+              </ng-container>
+
+              <mat-header-row *matHeaderRowDef="columns"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: columns;"></mat-row>
+            </mat-table>
+
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+      <mat-card-header><mat-card-title>Pie Chart View</mat-card-title></mat-card-header>
+      <mat-card-content><div #piechart></div></mat-card-content>
+    </mat-card>
+
+
+  </mat-grid-tile>
+
+
+
+<!--  <mat-grid-tile [colspan]="1" [rowspan]="2">-->
+
+
+
+
+<!--  </mat-grid-tile>-->
+
+</mat-grid-list>

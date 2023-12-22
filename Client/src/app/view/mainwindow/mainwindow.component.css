@@ -1,0 +1,225 @@
+/* Tool Bar */
+
+mat-toolbar-row {
+  background-color: #316868;
+  /*435f3b   #8CD6EF*/
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+.toolbar-left {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.toolbar-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+
+.img-logo {
+  height: 50px;
+  border-radius: 5px;
+  margin-left: 10px;
+  vertical-align: middle;
+}
+
+
+.btn-nav.mat-mdc-icon-button {
+  background-color: #8CD6EF;
+  color: #ffffff;
+  vertical-align: middle;
+  box-shadow: 1px 1px 6px #333333;
+  border: #c0d9c3 solid 2px;
+  padding: 10px;
+  --mat-mdc-button-ripple-color: rgba(255, 255, 255, 0.2);
+}
+
+.btn-navx.mat-mdc-icon-button {
+  background-color: #8CD6EF;
+  color: #ffffff;
+  vertical-align: middle;
+  box-shadow: 1px 1px 6px #333333;
+  border: #c0d9c3 solid 2px;
+  padding: 5px;
+  --mat-mdc-button-ripple-color: rgba(255, 255, 255, 0.2);
+}
+
+button mat-mini-fab {
+  color: #8CD6EF;
+}
+
+.lbl-user {
+  font-size: 14px;
+  color: white;
+  margin: 0px 5px 0px 0px;
+}
+
+.img-user {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+.btn-logout {
+  color: white;
+  border-radius: 0px;
+  margin: 0px 0px 0px -5px;
+}
+
+.mat-slide-toggle{
+  color: white;
+}
+
+
+.footer {
+  background-color: #316868;
+  padding: 10px;
+  text-align: center;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+}
+
+.dark-mode {
+  background-color: #333;
+  color: white;
+}
+
+
+/* Side Navigation */
+
+mat-sidenav-container {
+  height: 100%;
+  background-color: #d2e8e8;
+
+}
+
+mat-sidenav {
+  width: 15%;
+  background-color: #316868;
+}
+
+mat-sidenav a {
+  font-size: 14px;
+  text-decoration: none;
+  /*color: white;*/
+  background-color: #316868;
+}
+
+
+mat-list-item , mat-list-item a{
+  font-size: 14px;
+  text-decoration: none;
+  color: white;
+  background-color: #316868;
+}
+
+mat-list-item div{
+  font-size: 14px;
+  text-decoration: none;
+  color: white;
+}
+
+/* For nortification button*/
+/deep/ .mat-expansion-indicator::after, .mat-expansion-panel-header-description {
+  color: white;
+}
+
+/*Indicator animation*/
+.indicator{
+  position: relative;
+  top: -14px;
+  left: 12px ;
+  margin-bottom: -2px;
+}
+.circle{
+  background-color: #727cf5;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+.circle{
+  background-color: #727cf5;
+  content: "";
+  display: table;
+  border-radius: 50%;
+  position: absolute;
+
+  box-shadow: 0 0 0 0 rgba(114,124,245,1);
+  transform: scale(1);
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgb(114,124,245,1);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(0,0,0,0);
+  }
+
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 10px rgba(0,0,0,0);
+  }
+}
+
+.notification{
+  color: white;
+}
+
+mat-sidenav mat-icon {
+  font-size: 16px;
+  margin: 0px 0px -10px 0px;
+
+}
+
+mat-nav-list mat-list-item {
+  height: 35px;
+  font-size: 14px;
+  padding: 0px 5px 0px 10px;
+  color: white;
+  background-color: #316868;
+  border-bottom: #62d7d7 2px solid;
+}
+
+
+mat-nav-list mat-expansion-panel {
+  box-shadow: none;
+  border-radius: unset;
+  background-color: #316868;
+}
+
+
+mat-nav-list mat-expansion-panel-header {
+  height: 35px;
+  padding: 0 20px 0 0;
+  background-color: #316868;
+}
+
+
+mat-nav-list mat-expansion-panel mat-list-item {
+  height: 28px;
+  color: white;
+  background-color: #316868;
+}
+
+mat-mini-fab {
+  color: aqua;
+}
+
+a:hover{
+  color: white !important;
+}
+
